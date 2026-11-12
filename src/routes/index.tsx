@@ -90,7 +90,7 @@ const QUIZ = [
 function Quiz() {
   const [ans, setAns] = useState<(number | null)[]>(QUIZ.map(() => null));
   const [done, setDone] = useState(false);
-  const score = ans.filter((v, i) => v === QUIZ[i].a).length;
+  const score = ans.filter((v, i) => v === QUIZ[i]!.a).length;
   return (
     <div className="space-y-5">
       {QUIZ.map((item, i) => (
@@ -214,7 +214,7 @@ function Index() {
             {TIMELINE.map(([y], i) => <button key={y} className={`xp-btn pixel text-xl ${tl === i ? "on" : ""}`} onClick={() => setTl(i)}>{y}</button>)}
           </div>
           <div className="relative h-2 bg-[var(--xp-sky)] rounded mt-4"><div className="absolute h-2 rounded bg-[var(--xp-blue)] transition-all" style={{ width: `${((tl + 1) / TIMELINE.length) * 100}%` }} /></div>
-          <div className="xp-window mt-4"><div className="xp-title">📅 {TIMELINE[tl][0]}</div><div className="xp-body text-lg">{TIMELINE[tl][1]}</div></div>
+          <div className="xp-window mt-4"><div className="xp-title">📅 {TIMELINE[tl]![0]}</div><div className="xp-body text-lg">{TIMELINE[tl]![1]}</div></div>
           <div className="flex justify-between mt-3">
             <button className="xp-btn" disabled={tl === 0} onClick={() => setTl(tl - 1)}>◀ Anterior</button>
             <button className="xp-btn" disabled={tl === TIMELINE.length - 1} onClick={() => setTl(tl + 1)}>Próximo ▶</button>
